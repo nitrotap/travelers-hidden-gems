@@ -1,0 +1,29 @@
+{
+  "name": "travelers-gems",
+  "version": "1.0.0",
+  "description": "A travel app guide to find hidden gems across the United States",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kstensing/project-2.git"
+  },
+  "keywords": [
+    "travel",
+    "hidden-gems"
+  ],
+  "author": "Colby Harris, Kate Stensing, Kartik Jevaji, Pat Lawler, Whitney Dawson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kstensing/project-2/issues"
+  },
+  "homepage": "https://github.com/kstensing/project-2#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3"
+  }
+}
