@@ -23,7 +23,7 @@ Post.init(
             allowNull: true,
         }, 
         location: {
-            type: DataType.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         private_post: {
