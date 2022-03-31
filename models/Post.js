@@ -27,7 +27,7 @@ Post.init(
             allowNull: false
         },
         private_post: {
-            type: DataType.BOOLEAN,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
             default: false
         },
