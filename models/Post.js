@@ -23,8 +23,13 @@ Post.init(
             allowNull: true,
         }, 
         location: {
-            type: DataType.STRING,
+            type: DataTypes.STRING,
             allowNull: false
+        },
+        private_post: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            default: false
         },
         user_id: {
             type: DataTypes.INTEGER,
