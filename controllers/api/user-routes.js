@@ -2,8 +2,6 @@ const router = require('express').Router();
 const {
     User,
     Post,
-    Tag,
-    Tagged,
     Comment
 } = require('../../models');
 
@@ -41,18 +39,7 @@ router.get('/:id', (req, res) => {
                         model: Post,
                         attributes: ['title']
                     }
-                },
-                {
-                    model: Tag,
-                    attributes: ['tag_name']
-                },
-                // need to clarify how we'd like Tagged used
-                {
-                    model: Post,
-                    attributes: ['title'],
-                    through: Tagged,
-                    as: 'tagged'
-                },
+                }
             ]
         })
         .then(dbUserData => {
