@@ -26,10 +26,9 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        private_post: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            default: false
+        icon: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         user_id: {
             type: DataTypes.INTEGER,
