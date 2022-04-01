@@ -1,7 +1,5 @@
 const Post = require('./Post');
 const User = require('./User');
-const Tag = require('./Tag');
-const Tagged = require('./Tagged');
 const Comment = require('./Comment');
 
 // associations
@@ -31,22 +29,6 @@ Comment.belongsTo(User, {
 
 Comment.belongsTo(Post, {
   foreignKey: 'post_id'
-})
-
-Tag.hasMany(Post, {
-  through: Tagged,
-  as: "tags",
-  foreignKey: 'post_id',
-  onDelete: 'set null'
 });
 
-Post.hasMany(Tag, {
-  through: Tagged,
-  as: "tags",
-  foreignKey: 'tag_id',
-  onDelete: 'set null'
-});
-
-
-
-module.exports = { User, Post, Tag, Tagged, Comment };
+module.exports = { User, Post, Comment };
