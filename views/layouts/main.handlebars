@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traveler's Hidden Gems</title>
     <link rel="stylesheet" href="/stylesheets/styles.css">
+    <title>Traveler's Hidden Gems</title>
 </head>
 
 <body>
@@ -13,6 +13,14 @@
         <h1>
             <a href="/">Traveler's Hidden Gems</a>
         </h1>
+        <nav>
+            {{#if loggedIn}}
+            <a href="/dashboard">dashboard</a>
+            <button id="logout" class="">logout</button>
+            {{else}}
+            <a href="/login">login</a>
+            {{/if}}
+        </nav>
     </header>
     <main>
         {{{ body }}}
