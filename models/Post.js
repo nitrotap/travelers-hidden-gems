@@ -26,10 +26,10 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        private_post: {
-            type: DataTypes.BOOLEAN,
+        icon: {
+            type: DataTypes.STRING,
             allowNull: false,
-            default: false
+            defaultValue: "map-pin"
         },
         user_id: {
             type: DataTypes.INTEGER,
