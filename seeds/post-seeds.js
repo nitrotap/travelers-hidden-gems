@@ -5,19 +5,19 @@ const postdata = [
     title: 'Ashfall',
     contents: 'The Ashfall Fossil Beds of Antelope County in northeastern Nebraska are rare fossil sites of the type called lagerstätten that, due to extraordinary local conditions, capture an ecological "snapshot" in time of a range of well-preserved fossilized organisms.',
     location: '42.4217, 98.1563',
-    user_id: 10
+    user_id: 1
   },
   {
     title: 'Guanella Pass',
-    contents: 'https://nasa.gov/donec.json',
+    contents: 'Guanella Pass is a high mountain pass in central Colorado, in the Rocky Mountains of the western United States. The pass is located in southwestern Clear Creek County, in the Front Range west of Denver and south of Georgetown.',
     location: '39.5950, 105.7111',
-    user_id: 8
+    user_id: 2
   },
   {
     title: 'Mammoth Cave',
-    contents: 'https://europa.eu/parturient/montes/nascetur/ridiculus/mus/etiam/vel.aspx',
-    location: ,
-    user_id: 1
+    contents: "It has more than 640 kilometers (400 miles) of surveyed passageways, which is nearly twice as long as the second-longest cave system, Mexico's Sac Actun underwater cave.",
+    location: '37.1862, 86.1000',
+    user_id: 3
   }
 ];
 

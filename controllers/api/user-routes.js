@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'comment_text', 'created_at'],
+                    attributes: ['id', 'comment_text', 'created_at', 'user_id', 'post_id'],
                     include: {
                         model: Post,
                         attributes: ['title']
@@ -56,5 +56,26 @@ router.get('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+router.post('/', (req, res) => {
+    // expects {username: 'gypsyTraveler', email: 'gypsyTraveler@gmail.com', password: 'password123'}
+    User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    })
+      .then(userData => {
+        req.session.save(() => {
+          req.session.user_id = userData.id;
+          req.session.username = userData.username;
+          req.session.loggedIn = true;
+          res.json(userData);
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 module.exports = router;
