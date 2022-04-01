@@ -26,6 +26,11 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        icon: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "map-pin"
+        },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
