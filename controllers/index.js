@@ -1,9 +1,16 @@
 const router = require('express').Router();
 
 const apiRoutes = require('./api/');
-//TODO add other controller routes ex. homeRoutes or dashboardRoutes
+const homeRoutes = require('./home-routes');
 
 router.use('/api', apiRoutes);
-//TODO add other controller routes ex. '/' for homeRoutes or '/dashboard' for dashboardRoutes
+router.use('/', homeRoutes);
+
+router.use((req, res)=> {
+    res.render('error-page', {message:'Incorrect route encountered!'});
+});
+
+
+
 
 module.exports = router;
