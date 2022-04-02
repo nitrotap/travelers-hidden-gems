@@ -23,12 +23,16 @@ Post.init(
             allowNull: true,
         }, 
         location: {
-            type: DataType.STRING,
+            type: DataTypes.STRING,
             allowNull: false
+        },
+        icon: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "map-pin"
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id'
