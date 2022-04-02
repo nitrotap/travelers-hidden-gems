@@ -1,0 +1,8 @@
+
+<p>{{post.title}}</p>
+<p>{{post.contents}}</p>
+<p>{{post.location}}</p>
+{{#each post.comments as |comment|}}
+<p>{{comment.comment_text}}</p>
+<p>{{comment.user.username}}</p>
+{{/each}}
