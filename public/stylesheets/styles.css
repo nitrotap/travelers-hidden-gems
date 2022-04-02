@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --pri-clr: #0289e3;
+    --dark-pri-clr: #0260e3;
+    --white-clr: #fff;
+    --black: #1d1d1f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.title a:link {
+    color: black;
+    text-decoration: none;
+}
