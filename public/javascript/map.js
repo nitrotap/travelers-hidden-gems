@@ -3,9 +3,6 @@
 // 39.8283° N, 98.5795° W - Center of US
 const map = L.map('map').setView([39.8283, -98.5795], 4);
 
-
-// The API Key provided is restricted to JSFiddle website
-// Get your own API Key on https://myprojects.geoapify.com
 const myAPIKey = process.env.GeoAPI;
 
 // Retina displays require different mat tiles quality
