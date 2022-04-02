@@ -95,7 +95,6 @@ router.get('/', (req, res) => {
       });
   });
 
-  // add withAuth?
   router.put('/:id', (req, res) => {
     Post.update({
         title: req.body.title,
@@ -122,7 +121,6 @@ router.get('/', (req, res) => {
         });
 });
 
-// add withAuth?
 router.delete('/:id', (req, res) => {
     console.log('id', req.params.id);
     Post.destroy({
