@@ -1,32 +1,21 @@
-<form class="login-form">
-    <div>
-        <label for="username-login">username:</label>
-        <input type="text" id="username-login" />
+<form class="input-form">
+    <h2 id="form-label">User Login</h2>
+    <div class="signup-form">
+        <label for="username-input">username:</label>
+        <input type="text" id="username-input" value="" />
     </div>
     <div>
-        <label for="password-login">password:</label>
-        <input type="password" id="password-login" />
+        <label for="email-input">email:</label>
+        <input type="text" id="email-input" />
     </div>
     <div>
-        <button type="submit">login</button>
+        <label for="password-input">password:</label>
+        <input type="password" id="password-input" value="" />
     </div>
+    <div class="button-wrapper">
+        <button id="input-submit" type="">login</button>
+    </div>
+    <a href="#"><p id="switch-forms">New user? - click here</p></a>
 </form>
 
-<form class="signup-form">
-    <div>
-        <label for="username-signup">username:</label>
-        <input type="text" id="username-signup" />
-    </div>
-    <div>
-        <label for="email-signup">email:</label>
-        <input type="text" id="email-signup" />
-    </div>
-    <div>
-        <label for="password-signup">password:</label>
-        <input type="password" id="password-signup" />
-    </div>
-    <div>
-        <button type="submit">signup</button>
-    </div>
-</form>
 <script src="/javascript/login.js"></script>
