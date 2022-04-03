@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
       });
   });
 
-router.post('/', (req, res) => {
+router.post('/',withAuth, (req, res) => {
     // expects {body: "comment text goes here", post_id: 1, user_id: 1, }
     Comment.create({
             comment_text: req.body.comment_text,
@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
         });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id',withAuth, (req, res) => {
     Comment.update({
         comment_text: req.body.comment_text,
         user_id: req.session.user_id,
@@ -85,7 +85,7 @@ router.put('/:id', (req, res) => {
         });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id',withAuth, (req, res) => {
     Comment.destroy({
             where: {
                 id: req.params.id

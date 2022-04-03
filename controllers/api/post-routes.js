@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
       });
   });
   
-  router.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     Post.findOne({
       where: {
         id: req.params.id
@@ -79,7 +79,7 @@ router.get('/', (req, res) => {
       });
   });
   
-  router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     // expects {title: 'Crystal Cave', contents: 'Cool cave, awesone day trip!', location: '44.8333, -92.2520', icon: 'map-pin', user_id: 1}
     Post.create({
       title: req.body.title,
@@ -95,7 +95,7 @@ router.get('/', (req, res) => {
       });
   });
 
-  router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Post.update({
         title: req.body.title,
         contents: req.body.contents,
@@ -121,7 +121,7 @@ router.get('/', (req, res) => {
         });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     console.log('id', req.params.id);
     Post.destroy({
             where: {
