@@ -44,9 +44,9 @@ async function inputFormHandler(event) {
 			const response = await fetch('/api/users/login', {
 				  method: 'post',
 				  body: JSON.stringify({
-				username,
-				password
-				  }),
+					email,
+					password
+				  	}),
 				  headers: { 'Content-Type': 'application/json' }
 			});
 		
@@ -70,7 +70,7 @@ async function inputFormHandler(event) {
 	  
 			// check the response status
 			if (response.ok) {
-				console.log('success');
+				document.location.replace('/');
 			} else {
 				alert(response.statusText);
 			}
