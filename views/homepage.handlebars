@@ -4,7 +4,7 @@
         {{#each posts as |post|}}
         <li>
             <div class="feed-post">
-                <p class="post-title">{{title}} </p>
+                <a href="post/{{id}}"><p class="post-title">{{title}}</p></a>
                 <p class="post-contents">{{contents}}</p>
                 <p class="post-byline"><span class="post-user">{{user.username}}</span> | {{format_date created_at}} ({{timeSince created_at}})</p>
 
