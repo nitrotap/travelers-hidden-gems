@@ -72,4 +72,3 @@ async function getMarker() {
 }
 
 addMarkersToMap();
-

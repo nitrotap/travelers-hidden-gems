@@ -43,6 +43,7 @@ router.get('/location', (req, res) => {
   console.log('===========');
   Post.findAll({
     attributes: [
+      'title',
       'latitude',
       'longitude',
     ],
