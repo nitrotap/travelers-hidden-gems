@@ -75,4 +75,5 @@ function format_date(date) {
     return `${month}/${day}`
 }
 
+
 module.exports = {timeSince, commentCount, format_date, postCount }
