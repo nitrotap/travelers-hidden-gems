@@ -87,13 +87,6 @@ router.get('/post/:id', withAuth, (req, res) => {
     res.status(500).json(err);
   });
 });
-// router.get('/dashboard', withAuth, (req, res) => {
-  
-// 	res.render('dashboard', {
-//     req,
-//     loggedIn: req.session.loggedIn
-//   });
-// })
 router.get('/login', (req, res) => {
 	if (req.session.loggedIn) {
 		res.redirect('/');
