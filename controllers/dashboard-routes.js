@@ -11,7 +11,11 @@ router.get('/', withAuth, (req, res) => {
     attributes: [
       'id',
       'title',
-      'content',
+      'contents',
+      'latitude',
+      'longitude',
+      'icon',
+      'user_id',
       'created_at'
     ],
     include: [
@@ -31,7 +35,11 @@ router.get('/', withAuth, (req, res) => {
   })
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
-      res.render('dashboard', { posts, loggedIn: true });
+      res.render('dashboard', {
+        posts,
+        req,
+        loggedIn: req.session.loggedIn
+      });
     })
     .catch(err => {
       console.log(err);
@@ -68,7 +76,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         
         res.render('edit-post', {
           post,
-          loggedIn: true
+          loggedIn: req.session.loggedIn
         });
       } else {
         res.status(404).end();
@@ -80,7 +88,10 @@ router.get('/edit/:id', withAuth, (req, res) => {
 });
 
 router.get('/newpost', withAuth, (req, res) => {
-        res.render('add-post', { loggedIn: true })
+        res.render('add-post', {
+          req,
+          loggedIn: req.session.loggedIn
+        })
 });
 
 module.exports = router;
