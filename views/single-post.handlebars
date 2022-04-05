@@ -6,6 +6,7 @@
 
 {{#if loggedIn}}
 {{> add-comment }}
+<button type="button" class="bookmark-btn">Bookmark</button>
 {{/if}}
 
 <h4>{{commentCount post.comments}}</h4>
@@ -15,4 +16,5 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/bookmark.js"></script>
 {{/if}}

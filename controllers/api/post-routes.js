@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../../models');
+const { User, Post, Comment, Bookmark } = require('../../models');
 const withAuth = require('../../utils/auth');
-const Sequelize = require('sequelize');
+const sequelize = require('../../config/connection');
 
 // get all posts
 router.get('/', (req, res) => {
@@ -40,47 +40,48 @@ router.get('/', (req, res) => {
 });
   
 router.get('/:id', (req, res) => {
-    Post.findOne({
-      where: {
-        id: req.params.id
-      },
-      attributes: [
-        'id',
-        'title',
-        'contents',
-        'latitude',
-        'longitude',
-        'icon',
-        'user_id',
-        'created_at'
-      ],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'title',
+      'contents',
+      'latitude',
+      'longitude',
+      'icon',
+      'user_id',
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM bookmark WHERE post.id = bookmark.post_id)'), 'bookmark_count']
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
+        include: {
           model: User,
           attributes: ['username']
         }
-      ]
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(postData => {
+      if (!postData) {
+        res.status(404).json({ message: 'No post under that id!' });
+        return;
+      }
+      res.json(postData);
     })
-      .then(postData => {
-        if (!postData) {
-          res.status(404).json({ message: 'No post under that id!' });
-          return;
-        }
-        res.json(postData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
   
 router.post('/', withAuth, (req, res) => {
   // expects {title: 'Crystal Cave', contents: 'Cool cave, awesone day trip!', latitude: 44.8333, longitude: -92.2520, icon: map-pin(currently unused), user_id: 1}
@@ -97,6 +98,17 @@ router.post('/', withAuth, (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.put('/bookmark', withAuth, (req, res) => {
+  if (req.session) {
+    Post.bkmrk({ ...req.body, user_id: req.session.user_id }, { Bookmark, Comment, User })
+      .then(updatedBookmarkData => res.json(updatedBookmarkData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 });
 
 router.put('/:id', withAuth, (req, res) => {

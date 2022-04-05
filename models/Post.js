@@ -1,7 +1,41 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const Comment = require('./Comment')
 
-class Post extends Model {}
+class Post extends Model {
+  static bkmrk(body, models) {
+    return models.Bookmark.create({
+      user_id: body.user_id,
+      post_id: body.post_id
+    }).then(() => {
+      return Post.findOne({
+        where: {
+          id: body.post_id
+        },
+        attributes: [
+            'id',
+            'title',
+            'contents',
+            'latitude',
+            'longitude',
+            'icon',
+            'user_id',
+            'created_at'
+          [sequelize.literal('(SELECT COUNT(*) FROM bookmark WHERE post.id = bookmark.post_id)'),'bookmark_count']
+        ],
+        include:
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at']
+            // include: {
+            //   model: models.User,
+            //   attributes: ['username']
+            // }
+          }
+      });
+    });
+  }
+}
 
 Post.init(
     {

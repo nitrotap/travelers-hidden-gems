@@ -1,6 +1,7 @@
 const Post = require('./Post');
 const User = require('./User');
 const Comment = require('./Comment');
+const Bookmark = require('./Bookmark')
 
 // associations
 User.hasMany(Post, {
@@ -31,4 +32,34 @@ Comment.belongsTo(Post, {
   onDelete: 'SET NULL'
 });
 
-module.exports = { User, Post, Comment };
+Bookmark.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+})
+
+Bookmark.belongsTo(Post, {
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL'
+})
+
+User.hasMany(Bookmark, {
+  foreignKey: 'user_id'
+})
+
+Post.hasMany(Bookmark, {
+  foreignKey: 'post_id'
+})
+
+User.belongsToMany(Post, {
+  through: Bookmark,
+  as: 'bookmarked_posts',
+  foreignKey: 'user_id'
+});
+
+Post.belongsToMany(User, {
+  through: Bookmark,
+  as: 'bookmarked_posts',
+  foreignKey: 'post_id'
+});
+
+module.exports = { User, Post, Comment, Bookmark };
