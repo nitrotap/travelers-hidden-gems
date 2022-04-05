@@ -1,0 +1,25 @@
+<section>
+  <h2>Create New Post</h2>
+
+  <form class="new-post-form">
+    <div>
+      <input class="form-label" type="text" id="post-title" name="post-title" placeholder="Title" />
+    </div>
+    <div>
+      <textarea rows="5" cols="40" class="form-textarea" id="content" name="content" placeholder="What's your newest Hidden Gem?"></textarea>
+
+      <label for="lat-lon">Lat/Lon</label>
+      <input class="form-label" type="text" id="lat-lon" name="lat-lon" placeholder="34.090860, -118.337554" />
+    </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</section>
+
+<script src="/javascript/add-post.js"></script>
+
+{{!-- title: req.body.title,
+contents: req.body.contents,
+latitude: req.body.latitude,
+longitude: req.body.longitude,
+icon: req.body.icon, (unused)
+user_id: req.session.user_id (unneeded) --}}

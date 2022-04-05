@@ -83,21 +83,21 @@ router.get('/:id', (req, res) => {
   });
   
 router.post('/', withAuth, (req, res) => {
-    // expects {title: 'Crystal Cave', contents: 'Cool cave, awesone day trip!', latitude: 44.8333, longitude: -92.2520, user_id: 1}
-    Post.create({
-      title: req.body.title,
-      contents: req.body.contents,
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
-      icon: req.body.icon,
-      user_id: req.session.user_id
-    })
-      .then(postData => res.json(postData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+  // expects {title: 'Crystal Cave', contents: 'Cool cave, awesone day trip!', latitude: 44.8333, longitude: -92.2520, icon: map-pin(currently unused), user_id: 1}
+  Post.create({
+    title: req.body.title,
+    contents: req.body.contents,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude,
+    icon: "map-pin",
+    user_id: req.session.user_id
+  })
+    .then(postData => res.json(postData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 router.put('/:id', withAuth, (req, res) => {
     Post.update({
