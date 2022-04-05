@@ -6,4 +6,24 @@
   </a>
 </section>
 
+<br />
+{{#if posts.length}}
+<section>
+  <h2>Your Posts</h2>
+  <ul>
+    {{#each posts as |post|}}
+    <li>
+      {{> posts post}}
+    </li>
+    <a href="/dashboard/edit/{{post.id}}" class="edit-link">
+      <button class="btn btn-inline">Edit Post</button>
+    </a>
+    <a href="post/{{id}}">
+      <h4>{{commentCount post.comments}}</h4>
+    </a>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
+
 {{>map}}

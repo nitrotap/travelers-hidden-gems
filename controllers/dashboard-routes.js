@@ -51,8 +51,11 @@ router.get('/edit/:id', withAuth, (req, res) => {
   Post.findByPk(req.params.id, {
     attributes: [
       'id',
-      'content',
       'title',
+      'contents',
+      'latitude',
+      'longitude',
+      'icon',
       'created_at'
     ],
     include: [
@@ -76,6 +79,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         
         res.render('edit-post', {
           post,
+          req,
           loggedIn: req.session.loggedIn
         });
       } else {
