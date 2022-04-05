@@ -38,26 +38,6 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-
-router.get('/location', (req, res) => {
-  console.log('===========');
-  Post.findAll({
-    attributes: [
-      'title',
-      'latitude',
-      'longitude',
-    ],
-  })
-    .then(postData => {
-      const mapData = postData.map(post => post.get({ plain: true }))
-      // console.log(mapData)
-      res.json(mapData)
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
   
 router.get('/:id', (req, res) => {
     Post.findOne({

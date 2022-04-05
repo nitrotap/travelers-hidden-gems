@@ -1,5 +1,3 @@
-// require('dotenv').config();
-
 // 39.8283° N, 98.5795° W - Center of US
 const map = L.map('map').setView([39.8283, -98.5795], 4);
 
@@ -28,8 +26,6 @@ const markerIcon = L.icon(
 		popupAnchor: [0, -45] // point from which the popup should open relative to the iconAnchor
 });
 
-
-
 async function addMarkersToMap() {
 	let markers = await getMarker();
 
@@ -41,11 +37,25 @@ async function addMarkersToMap() {
 	}
 }
 
+const getDestination = () => {
+	switch(true) {
+		case document.URL.includes("dashboard"):
+			return apiUrl = '/api/locations/user';
+		case document.URL.includes("post"):
+			const postId = window.location.toString().split('/')[
+				window.location.toString().split('/').length - 1
+			];
+			return apiUrl = `/api/locations/${postId}`;
+		default:
+			return apiUrl = '/api/locations';
+	}
+}
 
 async function getMarker() {
 	let markerArray = new Array();
+	let apiUrl = getDestination();
 
-	const response = await fetch('/api/posts/location', {
+	const response = await fetch(`${apiUrl}`, {
 		method: 'get'
 	});
 
@@ -55,7 +65,7 @@ async function getMarker() {
 	} else {
 		// console.log(response.json());
 		const locationData = response.json();
-		console.log(locationData[1]);
+		// console.log(locationData[1]);
 		markerArray = locationData;
 		// console.log(markerArray);
 	};

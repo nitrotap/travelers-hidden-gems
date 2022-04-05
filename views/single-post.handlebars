@@ -1,10 +1,12 @@
-
-<p>{{post.title}}</p>
-<p>{{post.contents}}</p>
-<p>Lat: {{post.latitude}} Lon: {{post.longitude}}</p>
+<div class="feed-post">
+  <p class="post-title">{{post.title}}</p>
+  <p class="post-contents">{{post.contents}}</p>
+  <p class="post-byline"><span class="post-user">{{post.user.username}}</span> | {{format_date post.created_at}} ({{timeSince post.created_at}})</p>
+</div>
+<h4>{{commentCount post.comments}}</h4>
 {{#each post.comments as |comment|}}
-<p>{{comment.comment_text}}</p>
-<p>{{comment.user.username}}</p>
+<p class="comment-text">{{comment.comment_text}}</p>
+<p class="comment-byline"><span class="comment-user">{{comment.user.username}}</span> | {{format_date comment.created_at}} ({{timeSince comment.created_at}})</p>
 {{/each}}
 
 {{>map}}
