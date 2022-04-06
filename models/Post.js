@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const Comment = require('./Comment')
 
 class Post extends Model {
   static bkmrk(body, models) {
@@ -20,18 +19,19 @@ class Post extends Model {
             'longitude',
             'icon',
             'user_id',
-            'created_at'
+            'created_at',
           [sequelize.literal('(SELECT COUNT(*) FROM bookmark WHERE post.id = bookmark.post_id)'),'bookmark_count']
         ],
-        include:
+        include: [
           {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at']
-            // include: {
-            //   model: models.User,
-            //   attributes: ['username']
-            // }
+            model: models.Comment,
+            attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
+            include: {
+              model: models.User,
+              attributes: ['username']
+            }
           }
+        ]
       });
     });
   }

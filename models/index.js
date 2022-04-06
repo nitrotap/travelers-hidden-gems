@@ -32,6 +32,20 @@ Comment.belongsTo(Post, {
   onDelete: 'SET NULL'
 });
 
+User.belongsToMany(Post, {
+  through: Bookmark,
+  as: 'bookmarked_posts',
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
+Post.belongsToMany(User, {
+  through: Bookmark,
+  as: 'bookmarked_posts',
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL'
+});
+
 Bookmark.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
@@ -49,17 +63,5 @@ User.hasMany(Bookmark, {
 Post.hasMany(Bookmark, {
   foreignKey: 'post_id'
 })
-
-User.belongsToMany(Post, {
-  through: Bookmark,
-  as: 'bookmarked_posts',
-  foreignKey: 'user_id'
-});
-
-Post.belongsToMany(User, {
-  through: Bookmark,
-  as: 'bookmarked_posts',
-  foreignKey: 'post_id'
-});
 
 module.exports = { User, Post, Comment, Bookmark };

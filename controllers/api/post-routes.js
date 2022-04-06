@@ -101,14 +101,12 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.put('/bookmark', withAuth, (req, res) => {
-  if (req.session) {
-    Post.bkmrk({ ...req.body, user_id: req.session.user_id }, { Bookmark, Comment, User })
-      .then(updatedBookmarkData => res.json(updatedBookmarkData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  }
+  Post.bkmrk({ ...req.body, user_id: req.session.user_id }, { Bookmark, Comment, User })
+    .then(updatedBookmarkData => res.json(updatedBookmarkData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.put('/:id', withAuth, (req, res) => {
