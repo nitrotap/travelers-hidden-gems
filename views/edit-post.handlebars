@@ -3,7 +3,7 @@
 
   <div class="col container">
     <div class="row justify-content-center">
-      <div class="card f-1 p-0 col-6 align-self-center">
+      <div class="card f-1 p-0 col-6">
         <div class="card-header">
           <a href="post/{{post.id}}">
             <h5 class="post-title">{{post.title}}</h5>
@@ -13,9 +13,8 @@
           <p class="card-text">{{post.contents}}</p>
         </div>
         <div class="post-byline">
-          by you on {{format_date post.created_at}} ({{timeSince post.created_at}})
-          |
-          <a href="/post/{{post.id}}">{{commentCount post.comments}}</a>
+          <span>by you on {{format_date post.created_at}} ({{timeSince post.created_at}}) |</span>
+          <a href="/post/{{post.id}}#comments">{{commentCount post.comments}}</a>
         </div>
       </div>
     </div>
@@ -25,7 +24,7 @@
 
   <form class="edit-post-form col container">
     <div class="row justify-content-center">
-      <div class="card m-2 f-1 p-0 col-8 align-self-center">
+      <div class="card m-2 f-1 p-0 col-8">
         <div class="card-header text-center">
           <label for="post-title"><h5>Edit Title</h5></label>
           <input class="form-label" type="text" id="post-title" name="post-title" value="{{post.title}}" />
@@ -35,8 +34,8 @@
           <textarea rows="5" cols="60" class="form-textarea" id="content" name="content">{{post.contents}}</textarea>
         </div>
         <div class="text-center">
-          <button type="submit" class="btn btn-primary">Save Post</button>
-          <button type="button" class="btn btn-danger delete-post-btn">Delete Post</button>
+          <button type="submit" class="btn btn-primary m-2">Save Post</button>
+          <button type="button" class="btn btn-danger delete-post-btn m-2">Delete Post</button>
         </div>
       </div>
     </div>

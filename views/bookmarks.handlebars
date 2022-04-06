@@ -1,0 +1,47 @@
+<div class="container">
+  <h1 class="text-center col-12">Bookmarks</h1>
+
+  <div class="row d-flex dash">
+
+    {{>map}}
+
+    <section class="col d-flex flex-column m-2">
+
+      {{#if posts.length}}
+      <div class="container" style="margin-top: 25px">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+
+          {{#each posts as |post|}}
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <a href="post/{{id}}" class="text-decoration-none">
+                  <h5 class="post-title">{{title}}</h5>
+                </a>
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{contents}}</p>
+              </div>
+              <div class="post-byline">
+                <span>by you on {{format_date post.created_at}} ({{timeSince post.created_at}}) |</span>
+                <a href="/post/{{post.id}}#comments">{{commentCount post.comments}}</a>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+
+        </div>
+      </div>
+      {{else}}
+      <div class="text-center">
+        <h3>
+          It looks Like you don't have any Bookmarked posts yet!
+        </h3>
+        <a href="/"><button class="btn btn-primary">Find Hidden Gems</button></a>
+      </div>
+      {{/if}}
+
+    </section>
+
+  </div>
+</div>
