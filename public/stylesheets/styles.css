@@ -78,32 +78,48 @@
     margin-top: -200px;
     margin-left: -200px;
 }
+
 .signup-form {
     display: none;
 }
+
 #input-submit {
     height: 40px;
     width: 75px;
     margin: 10px;
     border-radius: 10px;
 }
+
 #switch-forms {
     margin-top: 10px;
     text-align: center;
 }
+
 .button-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
+
 .input-form input {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
 }
+
 #form-label {
     text-align: center;
     margin: 20px;
     font-weight: normal;
 }
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('travelers-hidden-gems\public\assets\images\pexels-tyler-lastovich-572688.jpg');
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
