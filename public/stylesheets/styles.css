@@ -9,9 +9,101 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .title a:link {
     color: black;
     text-decoration: none;
+}
+
+
+/* start of homepage formatting */
+.feed-list {
+    list-style: none;
+    padding: 10px;
+}
+
+.feed-list h4 {
+    font-size: 14px;
+    text-decoration: underline;
+    font-weight: bold;
+    font-style: oblique;
+    margin-left: 10px;
+}
+
+.divider {
+    border-bottom: solid 1px black;
+    margin-top: 20px;
+}
+.post-contents {
+    margin-left: 10px;
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+.post-title {
+    font-size:24px;
+    font-weight: bold;
+    color: var(--dark-pri-clr);
+}
+
+.comment-text {
+    font-size: 18px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+
+.post-byline, .comment-byline {
+    color: var(--pri-clr);
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Start of login page styling */
+.input-form {
+    margin: 25px;
+    border: solid 2px black;
+    box-shadow: 2px 2px 5px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 10px;
+    background-color: whitesmoke;
+    position: fixed; 
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -200px;
+}
+.signup-form {
+    display: none;
+}
+#input-submit {
+    height: 40px;
+    width: 75px;
+    margin: 10px;
+    border-radius: 10px;
+}
+#switch-forms {
+    margin-top: 10px;
+    text-align: center;
+}
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.input-form input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+#form-label {
+    text-align: center;
+    margin: 20px;
+    font-weight: normal;
 }

@@ -1,0 +1,18 @@
+<div class="feed-post">
+  <p class="post-title">{{post.title}}</p>
+  <p class="post-contents">{{post.contents}}</p>
+  <p class="post-byline"><span class="post-user">{{post.user.username}}</span> | {{format_date post.created_at}} ({{timeSince post.created_at}})</p>
+</div>
+
+{{#if loggedIn}}
+{{> add-comment }}
+{{/if}}
+
+<h4>{{commentCount post.comments}}</h4>
+{{> comments post.comments}}
+
+{{>map}}
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}

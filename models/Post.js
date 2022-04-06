@@ -22,8 +22,12 @@ Post.init(
             type: DataTypes.TEXT,
             allowNull: true,
         }, 
-        location: {
-            type: DataTypes.STRING,
+        latitude: {
+            type: DataTypes.FLOAT(10, 6),
+            allowNull: false
+        },
+        longitude: {
+            type: DataTypes.FLOAT(10, 6),
             allowNull: false
         },
         icon: {
@@ -33,7 +37,6 @@ Post.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id'
