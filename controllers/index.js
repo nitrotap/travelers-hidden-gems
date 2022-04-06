@@ -10,7 +10,4 @@ router.use((req, res)=> {
     res.render('error-page', {message:'Incorrect route encountered!'});
 });
 
-
-
-
 module.exports = router;

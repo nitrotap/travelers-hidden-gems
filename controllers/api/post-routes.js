@@ -1,41 +1,63 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
+const Sequelize = require('sequelize');
 
 // get all posts
 router.get('/', (req, res) => {
-    console.log('===========');
-    Post.findAll({
-      attributes: [
-        'id',
-        'title',
-        'contents',
-        'location',
-        'icon',
-        'user_id',
-        'created_at'
-      ],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
+  console.log('===========');
+  Post.findAll({
+    attributes: [
+      'id',
+      'title',
+      'contents',
+      'latitude',
+      'longitude',
+      'icon',
+      'user_id',
+      'created_at'
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
+        include: {
           model: User,
           attributes: ['username']
         }
-      ]
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(postData => res.json(postData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/location', (req, res) => {
+  console.log('===========');
+  Post.findAll({
+    attributes: [
+      'title',
+      'latitude',
+      'longitude',
+    ],
+  })
+    .then(postData => {
+      const mapData = postData.map(post => post.get({ plain: true }))
+      // console.log(mapData)
+      res.json(mapData)
     })
-      .then(postData => res.json(postData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
   
 router.get('/:id', (req, res) => {
     Post.findOne({
@@ -46,7 +68,8 @@ router.get('/:id', (req, res) => {
         'id',
         'title',
         'contents',
-        'location',
+        'latitude',
+        'longitude',
         'icon',
         'user_id',
         'created_at'
@@ -80,11 +103,12 @@ router.get('/:id', (req, res) => {
   });
   
 router.post('/', withAuth, (req, res) => {
-    // expects {title: 'Crystal Cave', contents: 'Cool cave, awesone day trip!', location: '44.8333, -92.2520', icon: 'map-pin', user_id: 1}
+    // expects {title: 'Crystal Cave', contents: 'Cool cave, awesone day trip!', latitude: 44.8333, longitude: -92.2520, user_id: 1}
     Post.create({
       title: req.body.title,
       contents: req.body.contents,
-      location: req.body.location,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
       icon: req.body.icon,
       user_id: req.session.user_id
     })
@@ -99,7 +123,8 @@ router.put('/:id', withAuth, (req, res) => {
     Post.update({
         title: req.body.title,
         contents: req.body.contents,
-        location: req.body.location,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
         icon: req.body.icon,
         }, {
             where: {

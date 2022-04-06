@@ -10,7 +10,8 @@ router.get('/', withAuth, (req, res) => {
         'id',
         'title',
         'contents',
-        'location',
+        'latitude',
+        'longitude',
         'icon',
         'user_id',
         'created_at'
@@ -48,7 +49,8 @@ router.get('/post/:id', withAuth, (req, res) => {
       'id',
       'title',
       'contents',
-      'location',
+      'latitude',
+      'longitude',
       'icon',
       'user_id',
       'created_at'
@@ -93,6 +95,5 @@ router.get('/login', (req, res) => {
   
 	res.render('login');
 });
-
 
 module.exports = router;
