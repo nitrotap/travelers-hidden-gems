@@ -30,6 +30,7 @@
                 </a>
                 <p class="post-byline"><span class="post-user">{{user.username}}</span> | {{format_date created_at}}
                   ({{timeSince created_at}})</p>
+                  <a href="/dashboard/edit/{{id}}"><button class="btn btn-primary">Edit Post</button></a>
               </div>
               <div class="card-body">
                 <p class="card-text">{{contents}}</p>

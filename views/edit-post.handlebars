@@ -1,30 +1,48 @@
 <article>
-  <a href="/dashboard"> &larr; Back to dashboard</a>
-  <h2>
-    Edit Post
-  </h2>
-  <form class="edit-post-form">
-    <div>
-      <br />
-      <label for="post-title"><h3>Title</h3></label>
-      <input class="form-label" type="text" id="post-title" name="post-title" value="{{post.title}}" />
-      <label for="content"><h3>Post</h3></label>
-      <textarea rows="5" cols="40" class="form-textarea" id="content" name="content">{{post.contents}}</textarea>
+  <h1 style="text-align: center">Edit Post</h1>
+
+  <div class="col container">
+    <div class="row justify-content-center">
+      <div class="card f-1 p-0 col-6 align-self-center">
+        <div class="card-header">
+          <a href="post/{{post.id}}">
+            <h5 class="post-title">{{post.title}}</h5>
+          </a>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{post.contents}}</p>
+        </div>
+        <div class="post-byline">
+          by you on {{format_date post.created_at}} ({{timeSince post.created_at}})
+          |
+          <a href="/post/{{post.id}}">{{commentCount post.comments}}</a>
+        </div>
+      </div>
     </div>
-    <div>
-      by you on {{format_date post.created_at}}
-      |
-      <a href="/post/{{post.id}}">{{commentCount post.comments}}</a>
+  </div>
+
+  <br />
+
+  <form class="edit-post-form col container">
+    <div class="row justify-content-center">
+      <div class="card m-2 f-1 p-0 col-8 align-self-center">
+        <div class="card-header text-center">
+          <label for="post-title"><h5>Edit Title</h5></label>
+          <input class="form-label" type="text" id="post-title" name="post-title" value="{{post.title}}" />
+        </div>
+        <div class="card-body text-center">
+          <label for="content" class="col-12"><h5>Edit Post Content</h5></label>
+          <textarea rows="5" cols="60" class="form-textarea" id="content" name="content">{{post.contents}}</textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Save Post</button>
+          <button type="button" class="btn btn-danger delete-post-btn">Delete Post</button>
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-inline">Save Post</button>
-    <button type="button" class="btn btn-inline delete-post-btn">Delete Post</button>
   </form>
+
 </article>
-
-{{> add-comment }}
-
-{{> comments post.comments}}
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
-<script src="/javascript/comment.js"></script>
