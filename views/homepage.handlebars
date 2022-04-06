@@ -1,22 +1,17 @@
 <section>
     {{>map}}
-    <ul class="feed-list">
-        <div class="divider"></div>
-        {{#each posts as |post|}}
-        <li>
-            <div class="feed-post">
-                <a href="post/{{id}}"><p class="post-title">{{title}}</p></a>
-                <p class="post-contents">{{contents}}</p>
-                <p class="post-byline"><span class="post-user">{{user.username}}</span> | {{format_date created_at}} ({{timeSince created_at}})</p>
+    <div class="card-group d-flex flex-wrap justify-content-md-center">
+    {{#each posts as |post|}}
+    <div class="card m-2 f-1" >
+        <div class="card-header">
+            <a href="post/{{id}}"><h5 class="post-title">{{title}}</h5></a>
+            <p class="post-byline"><span class="post-user">{{user.username}}</span> | {{format_date created_at}} ({{timeSince created_at}})</p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{contents}}</p>
+        </div>
+    </div>
+    {{/each}}
+    </div>
 
-            </div>
-            <h4>{{commentCount post.comments}}</h4>
-            {{#each comments as |comment|}}
-                <p class="comment-text">{{comment_text}}</p>
-                <p class="comment-byline"><span class="comment-user">{{user.username}}</span> | {{format_date created_at}} ({{timeSince created_at}})</p>
-            {{/each}}
-            <div class="divider"></div>
-        </li>
-        {{/each}}
-    </ul>
 </section>
