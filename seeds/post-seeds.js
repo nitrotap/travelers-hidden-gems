@@ -73,6 +73,13 @@ const postdata = [
 		icon: 'map-pin',
 		user_id: 3
 	},
+	{
+		title: 'Taqueria of Hollywood',
+		contents: 'A small taco stand right in the heart of Hollywood. They have amazing tacos and even better prices!',
+		latitude: 34.090860,
+		longitude: -118.337554,
+		user_id: 4
+	}
 ];
 
 const seedPosts = () => Post.bulkCreate(postdata);
