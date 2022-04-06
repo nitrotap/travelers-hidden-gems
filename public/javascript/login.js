@@ -50,8 +50,9 @@ async function inputFormHandler(event) {
 				  headers: { 'Content-Type': 'application/json' }
 			});
 		
+			// debugger;
 			if (response.ok) {
-				  document.location.replace('/');
+				  document.location.replace('/dashboard');
 			} else {
 				  alert(response.statusText);
 			}
@@ -70,7 +71,7 @@ async function inputFormHandler(event) {
 	  
 			// check the response status
 			if (response.ok) {
-				document.location.replace('/');
+				document.location.replace('/dashboard');
 			} else {
 				alert(response.statusText);
 			}
