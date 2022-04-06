@@ -2,7 +2,9 @@
   <h1 style="text-align: center">Dashboard</h1>
 
 
-  <div class="row d-flex">
+  <div class="row d-flex dash">
+
+    {{>map-dash}}
 
 
     {{#if posts.length}}
@@ -19,7 +21,7 @@
 
       <div class="container" style="margin-top: 25px">
 
-        <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="row row-cols-1 row-cols-xl-2 g-4">
 
           {{#each posts as |post|}}
           <div class="col">
@@ -46,7 +48,6 @@
 
 
 
-    {{>map-dash}}
 
 
     <br />

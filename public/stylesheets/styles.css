@@ -112,13 +112,35 @@
     font-weight: normal;
 }
 
-@media screen and (max-width: 768px) {
-    .home-cards {
-        flex-flow: column;
+.map-dash {
+    height: 80%;
+    width: 100%;
+    margin: auto;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .map-dash {
+        height: 500px;
+        width: 500px;
+        margin: auto;
     }
 }
 
-@include media-breakpoint-down(md) {
+@media screen and (max-width: 992px) {
+    .map-dash {
+        width: 500px;
+        margin: auto;
+    }
+
+    .dash {
+        display: inline;
+
+    }
+}
+
+@media screen and (max-width: 768px) {
     .home-cards {
         flex-flow: column;
     }
