@@ -1,18 +1,30 @@
 <section>
-  <h2>Create New Post</h2>
+  <div class="container">
+    <div class="row">
+      <h2 style="text-align: center;">Create New Post</h2>
 
-  <form class="new-post-form">
-    <div>
-      <input class="form-label" type="text" id="post-title" name="post-title" placeholder="Title" />
-    </div>
-    <div>
-      <textarea rows="5" cols="40" class="form-textarea" id="content" name="content" placeholder="What's your newest Hidden Gem?"></textarea>
+      <form class="new-post-form" style="text-align: center;">
+        <div>
+          <input class="form-label" type="text" id="post-title" name="post-title" placeholder="Post Title"
+            style="width: 300px" />
+        </div>
+        <div>
+          <textarea rows="5" cols="40" class="form-textarea" id="content" name="content"
+            placeholder="Describe your newest Hidden Gem!"></textarea>
+        </div>
+        <div>
+          <label for="lat-lon">Lat/Lon</label>
+          <input class="form-label" type="text" id="lat-lon" name="lat-lon" placeholder="34.090860, -118.337554" />
+        </div>
+        <button type="submit" class="btn">Create</button>
+      </form>
 
-      <label for="lat-lon">Lat/Lon</label>
-      <input class="form-label" type="text" id="lat-lon" name="lat-lon" placeholder="34.090860, -118.337554" />
+
     </div>
-    <button type="submit" class="btn">Create</button>
-  </form>
+
+  </div>
+
+
 </section>
 
 <script src="/javascript/add-post.js"></script>
