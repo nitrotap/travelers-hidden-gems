@@ -1,18 +1,29 @@
-<div class="feed-post">
-  <p class="post-title">{{post.title}}</p>
-  <p class="post-contents">{{post.contents}}</p>
-  <p class="post-byline"><span class="post-user">{{post.user.username}}</span> | {{format_date post.created_at}} ({{timeSince post.created_at}})</p>
-</div>
 
-{{#if loggedIn}}
-{{> add-comment }}
-<button type="button" class="bookmark-btn">Bookmark</button>
-{{/if}}
-
-<h4>{{commentCount post.comments}}</h4>
-{{> comments post.comments}}
 
 {{>map}}
+
+
+<div class="card text-center">
+  <div class="card-header">
+   <p class="post-title">{{post.title}}</p>
+  </div>
+  <div class="card-body">
+    <p class="post-contents">{{post.contents}}</p>
+  <p class="post-byline"><span class="post-user">{{post.user.username}}</span> | {{format_date post.created_at}} ({{timeSince post.created_at}})</p>
+  
+  {{#if loggedIn}}
+  {{> add-comment }}
+  <button type="button" class="bookmark-btn">Bookmark</button>
+  {{/if}}
+    
+    {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+  </div>
+  <div class="card-footer text-muted">
+    <h4>{{commentCount post.comments}}</h4>
+    {{> comments post.comments}}  
+
+  </div>
+</div>
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
