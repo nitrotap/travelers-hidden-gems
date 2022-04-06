@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
+
 const {
     User,
     Post,
@@ -7,11 +9,7 @@ const {
 
 // get all users
 router.get('/', (req, res) => {
-    User.findAll({
-            attributes: {
-                exclude: ['password']
-            }
-        })
+    User.findAll()
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
@@ -56,7 +54,6 @@ router.get('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
-
 router.post('/', (req, res) => {
     // expects {username: 'gypsyTraveler', email: 'gypsyTraveler@gmail.com', password: 'password123'}
     User.create({
@@ -77,7 +74,6 @@ router.post('/', (req, res) => {
             res.status(500).json(err);
         });
 });
-
 router.put('/:id', (req, res) => {
     User.update(req.body, {
             individualHooks: true,
@@ -99,7 +95,6 @@ router.put('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
-
 router.delete('/:id', (req, res) => {
     User.destroy({
       where: {
@@ -117,6 +112,40 @@ router.delete('/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
-  });
+});
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then(dbUserData => {
+        if(!dbUserData) {
+            res.status(404).json({message: 'no user with that email address was found'});
+            return;
+        }
+        const validPassword = dbUserData.checkPassword(req.body.password);
+        
+        if(!validPassword) {
+            res.status(400).json({message: 'Incorrect password!'});
+            return;
+        }
+
+        req.session.save(()=> {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+            res.json({user: dbUserData, message: 'You are now logged in!'});
+        });
+    });
+});
+router.post('/logout', (req, res) => {
+    if(req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end()
+        });
+    } else {
+        res.status(404).end();
+    }
+})
 
 module.exports = router;

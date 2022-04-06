@@ -1,9 +1,7 @@
-
-
 // 39.8283° N, 98.5795° W - Center of US
 const map = L.map('map').setView([39.8283, -98.5795], 4);
 
-const myAPIKey = process.env.GeoAPI;
+const myAPIKey = '2a9781ea447940f085ee5b79f8ba5d50';
 
 // Retina displays require different mat tiles quality
 const isRetina = L.Browser.retina;
@@ -26,25 +24,51 @@ const markerIcon = L.icon(
 		iconSize: [31, 46], // size of the icon
 		iconAnchor: [15.5, 42], // point of the icon which will correspond to marker's location
 		popupAnchor: [0, -45] // point from which the popup should open relative to the iconAnchor
-	});
-
-
+});
 
 async function addMarkersToMap() {
 	let markers = await getMarker();
 
 	for (let i in markers) {
 		const newMarkerPopup = L.popup().setContent(markers[i].title);
-		const newMarker = L.marker([markers[i].lat, markers[i].long], {
+		const newMarker = L.marker([markers[i].latitude, markers[i].longitude], {
 			icon: markerIcon
 		}).bindPopup(newMarkerPopup).addTo(map);
 	}
 }
 
+const getDestination = () => {
+	switch(true) {
+		case document.URL.includes("dashboard"):
+			return apiUrl = '/api/locations/user';
+		case document.URL.includes("post"):
+			const postId = window.location.toString().split('/')[
+				window.location.toString().split('/').length - 1
+			];
+			return apiUrl = `/api/locations/${postId}`;
+		default:
+			return apiUrl = '/api/locations';
+	}
+}
 
-function getMarker() {
+async function getMarker() {
 	let markerArray = new Array();
-	//todo get all markers from database
+	let apiUrl = getDestination();
+
+	const response = await fetch(`${apiUrl}`, {
+		method: 'get'
+	});
+
+	if (!response.ok) {
+			alert(response.statusText);
+			console.log(response.statusText);
+	} else {
+		// console.log(response.json());
+		const locationData = response.json();
+		// console.log(locationData[1]);
+		markerArray = locationData;
+		// console.log(markerArray);
+	};
 
 	if (markerArray.length < 1) {
 		let defaultMarker = {
@@ -58,4 +82,3 @@ function getMarker() {
 }
 
 addMarkersToMap();
-
