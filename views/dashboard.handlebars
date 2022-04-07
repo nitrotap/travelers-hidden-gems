@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center col-12">Dashboard</h1>
+  <h1 class="text-center col-12">{{username}}Dashboard</h1>
 
   <div class="row d-flex dash">
 
@@ -52,7 +52,7 @@
               </div>
               <div class="post-byline">
                 <span>by you on {{format_date post.created_at}} ({{timeSince post.created_at}}) |</span>
-                <a href="/post/{{post.id}}#comments">{{commentCount post.comments}}</a>
+                <a href="/post/{{post.id}}">{{commentCount post.comments}}</a>
               </div>
             </div>
           </div>
