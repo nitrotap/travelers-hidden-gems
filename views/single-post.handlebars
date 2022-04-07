@@ -12,14 +12,16 @@
         <div>
           {{#if loggedIn}}
           {{#if post.bookmarks}}
-          <button type="button" class="btn btn-primary">Already Bookmarked</button>
+          <a href="/dashboard/bookmarks">
+            <button type="button" class="btn btn-primary">Already Bookmarked</button>
+          </a>
           {{else}}
           <button type="button" class="btn btn-primary bookmark-btn">Bookmark</button>
           {{/if}}
           {{/if}}
         </div>
       </div>
-      
+
       <div class="col">
         {{#if loggedIn}}
         {{> add-comment }}
