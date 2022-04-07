@@ -1,36 +1,39 @@
 <div class="container">
+
   <h1 class="text-center col-12">{{req.session.username}}'s Dashboard</h1>
+
+
 
   <div class="row d-flex dash">
 
     {{>map}}
 
-      {{#if posts.length}}
-      <div class="d-flex row mt-2">
-        <div class="col-4 text-nowrap text-center">
-          <h2 class="ms-1">Your Posts</h2>
-        </div>
-        <div class="col-4 d-flex justify-content-center">
-          <a href="/dashboard/newpost"><button class="btn btn-primary">Create New Post</button></a>
-        </div>
-        <div class="col-4 d-flex justify-content-center">
-          <a href="/dashboard/bookmarks"><button class="btn btn-secondary">View Your Bookmarks</button></a>
-        </div>
+    {{#if posts.length}}
+    <div class="d-flex row mt-4">
+      <div class="col text-nowrap text-center">
+        <h2 class="ms-1">Your Posts</h2>
       </div>
-      {{else}}
-      <div class="d-flex row mt-1">
-        <div class="col text-nowrap text-center">
-          <h2>Welcome</h2>
-          <p>You don't have any posts yet!</p>
-        </div>
-        <div class="col d-flex justify-content-center">
-          <a href="/dashboard/newpost"><button class="btn btn-primary">Create Your First Post</button></a>
-        </div>
-        <div class="col-4 d-flex justify-content-center">
-          <a href="/dashboard/bookmarks"><button class="btn btn-secondary">View Your Bookmarks</button></a>
-        </div>
+      <div class="col d-flex justify-content-center">
+        <a href="/dashboard/newpost"><button class="btn btn-primary">Create New Post</button></a>
       </div>
-      {{/if}}
+      <div class="col d-flex justify-content-center">
+        <a href="/dashboard/bookmarks"><button class="btn btn-secondary">View Your Bookmarks</button></a>
+      </div>
+    </div>
+    {{else}}
+    <div class="d-flex row mt-1">
+      <div class="col text-nowrap text-center">
+        <h2>Welcome</h2>
+        <p>You don't have any posts yet!</p>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <a href="/dashboard/newpost"><button class="btn btn-primary">Create Your First Post</button></a>
+      </div>
+      <div class="col-4 d-flex justify-content-center">
+        <a href="/dashboard/bookmarks"><button class="btn btn-secondary">View Your Bookmarks</button></a>
+      </div>
+    </div>
+    {{/if}}
 
     <section class="col d-flex flex-column m-2">
 
@@ -41,11 +44,12 @@
           {{#each posts as |post|}}
           <div class="col">
             <div class="card">
-              <div class="card-header">
+              <div class="card-header d-flex justify-content-around">
                 <a href="post/{{id}}" class="text-decoration-none">
                   <h5 class="post-title">{{title}}</h5>
                 </a>
-                  <a href="/dashboard/edit/{{id}}"><button class="btn btn-primary">Edit Post</button></a>
+                <a href="/dashboard/edit/{{id}}">
+                  <button class="btn btn-primary">Edit Post</button></a>
               </div>
               <div class="card-body">
                 <p class="card-text">{{contents}}</p>
@@ -66,7 +70,7 @@
           <div class="col">
             <div class="card m-2 f-1">
               <div class="card-header">
-                  <h5 class="post-title">Your Post Could Be Here</h5>
+                <h5 class="post-title">Your Post Could Be Here</h5>
               </div>
               <div class="card-body">
                 <p class="card-text">
