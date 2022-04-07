@@ -19,6 +19,7 @@
 }
 
 
+
 /* start of homepage formatting */
 .feed-list {
     list-style: none;
@@ -77,6 +78,10 @@
 
 }
 
+.card {
+    opacity: .9;
+}
+
 .signup-form {
     display: none;
 }
@@ -118,7 +123,7 @@
     /* background-position: center; */
     background-repeat: no-repeat;
     background-size: cover;
-    
+
 }
 
 
