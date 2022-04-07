@@ -9,36 +9,36 @@
         <p class="post-contents">{{post.contents}}</p>
         <p class="post-byline"><span class="post-user">{{post.user.username}}</span> | {{format_date post.created_at}}
           ({{timeSince post.created_at}})</p>
+        <div>
+          {{#if loggedIn}}
+          {{#if post.bookmarks}}
+          <button type="button" class="btn btn-primary">Already Bookmarked</button>
+          {{else}}
+          <button type="button" class="btn btn-primary bookmark-btn">Bookmark</button>
+          {{/if}}
+          {{/if}}
+        </div>
       </div>
+      
       <div class="col">
         {{#if loggedIn}}
         {{> add-comment }}
         {{/if}}
-
       </div>
 
 
       {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
     </div>
-    <div class="card-footer text-muted">
+    <div class="card-footer text-muted" id="comments">
       <h4>{{commentCount post.comments}}</h4>
       {{> comments post.comments}}
-
     </div>
   </div>
 </div>
 
-
-
-<div class="feed-post">
-
-
-</div>
-
-
-
-
-
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+{{#unless post.bookmarks}}
+<script src="/javascript/bookmark.js"></script>
+{{/unless}}
 {{/if}}
