@@ -66,7 +66,7 @@ router.get('/bookmarks', (req, res) => {
   })
     .then(postData => {
       const mapData = postData.map(bookmark => bookmark.post.get({ plain: true }))
-      console.log(mapData)
+      // console.log(mapData)
       res.json(mapData)
     })
     .catch(err => {

@@ -7,17 +7,17 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <a href="post/{{id}}">
-                            <h5 class="post-title">{{title}}</h5>
+                        <a href="post/{{id}}" class="text-decoration-none">
+                            <h5 class="post-title text-secondary">{{title}}</h5>
                         </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{contents}}</p>
                         <p class="post-byline">
                             <span class="post-user">{{user.username}}</span> | {{format_date
                             created_at}}
                             ({{timeSince created_at}})
                         </p>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">{{contents}}</p>
                     </div>
                 </div>
             </div>
