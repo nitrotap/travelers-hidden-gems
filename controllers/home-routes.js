@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment } = require('../models');
+const { Post, User, Comment, Bookmark } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
@@ -66,6 +66,14 @@ router.get('/post/:id', withAuth, (req, res) => {
       {
         model: User,
         attributes: ['username']
+      },
+      {
+        model: Bookmark,
+        where: {
+          user_id: req.session.user_id
+        },
+        required: false,
+        attributes: ['id', 'user_id', 'post_id']
       }
     ]
   })
@@ -75,6 +83,7 @@ router.get('/post/:id', withAuth, (req, res) => {
       return;
     }
     const post = dbPostData[0].get({ plain: true });
+    // console.log(post)
     res.render('single-post', {
       req,
       post,

@@ -11,7 +11,11 @@
           ({{timeSince post.created_at}})</p>
         <div>
           {{#if loggedIn}}
+          {{#if post.bookmarks}}
+          <button type="button" class="btn btn-primary">Already Bookmarked</button>
+          {{else}}
           <button type="button" class="btn btn-primary bookmark-btn">Bookmark</button>
+          {{/if}}
           {{/if}}
         </div>
       </div>
@@ -34,5 +38,7 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+{{#unless post.bookmarks}}
 <script src="/javascript/bookmark.js"></script>
+{{/unless}}
 {{/if}}
