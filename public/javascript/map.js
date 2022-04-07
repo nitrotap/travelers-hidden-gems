@@ -39,6 +39,8 @@ async function addMarkersToMap() {
 
 const getDestination = () => {
 	switch(true) {
+		case document.URL.includes("bookmarks"):
+			return apiUrl = '/api/locations/bookmarks';
 		case document.URL.includes("dashboard"):
 			return apiUrl = '/api/locations/user';
 		case document.URL.includes("post"):

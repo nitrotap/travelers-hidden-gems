@@ -1,6 +1,8 @@
-<div class="comments">
-{{#each this as |comment|}}
-<p class="comment-text">{{comment.comment_text}}</p>
-<p class="comment-byline"><span class="comment-user">{{comment.user.username}}</span> | {{format_date comment.created_at}} ({{timeSince comment.created_at}})</p>
-{{/each}}
+<div class="comments row justify-content-center">
+  {{#each this as |comment|}}
+  <div class="border-top border-dark m-2 col-8">
+    <p class="comment-text">{{comment.comment_text}}</p>
+    <p class="comment-byline"><span class="comment-user">{{comment.user.username}}</span> | {{format_date comment.created_at}} ({{timeSince comment.created_at}})</p>
+  </div>
+  {{/each}}
 </div>
