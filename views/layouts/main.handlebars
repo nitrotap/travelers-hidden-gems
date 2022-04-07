@@ -14,9 +14,9 @@
     <title>Traveler's Hidden Gems</title>
 </head>
 
-<body>
+<body class="min-vh-100 d-flex flex-column">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="opacity: .75">
             <div class="container-fluid">
                 <a href="/" class="navbar-brand col-sm text-center d-flex flex-row justify-content-start">
 
@@ -48,10 +48,10 @@
             </div>
         </nav>
     </header>
-    <main>
+    <main id="main">
         {{{ body }}}
     </main>
-    <footer class="bg-dark text-center text-white">
+    <footer class="bg-dark text-center text-white mt-auto">
         <div class="container p-4 pb-0">
             <a href="https://github.com/nitrotap/travelers-hidden-gems" class="btn btn-outline-light btn-floating m-1"
                 role="button">
@@ -62,13 +62,16 @@
 
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             @ 2022 Copyright:
-            <a href="#!" class="text-white">Traveler's Hidden Gems</a>
+            <a href="https://github.com/nitrotap/travelers-hidden-gems" class="text-white">Traveler's Hidden Gems</a>
         </div>
     </footer>
     </div>
+
     {{#if req.session.loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
+    <script src="/javascript/background.js"></script>
+
 </body>
 
 </html>

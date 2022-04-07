@@ -1,5 +1,5 @@
 {{>map}}
-<div class="container" style="width: auto">
+<div class="container" style="width: auto; margin-bottom: 10px;">
   <div class="card text-center">
     <div class="card-header">
       <p class="post-title">{{post.title}}</p>
@@ -12,14 +12,16 @@
         <div>
           {{#if loggedIn}}
           {{#if post.bookmarks}}
-          <button type="button" class="btn btn-primary">Already Bookmarked</button>
+          <a href="/dashboard/bookmarks">
+            <button type="button" class="btn btn-primary">Already Bookmarked</button>
+          </a>
           {{else}}
-          <button type="button" class="btn btn-primary bookmark-btn">Bookmark</button>
+          <button type="button" class="btn btn-primary bookmark-btn" style="margin-bottom: 5px;">Bookmark</button>
           {{/if}}
           {{/if}}
         </div>
       </div>
-      
+
       <div class="col">
         {{#if loggedIn}}
         {{> add-comment }}

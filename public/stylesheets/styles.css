@@ -19,6 +19,7 @@
 }
 
 
+
 /* start of homepage formatting */
 .feed-list {
     list-style: none;
@@ -77,6 +78,10 @@
 
 }
 
+.card {
+    opacity: .9;
+}
+
 .signup-form {
     display: none;
 }
@@ -111,6 +116,16 @@
     margin: 20px;
     font-weight: normal;
 }
+
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/pexels-tyler-lastovich-572688.jpg');
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
 
 .map-dash {
     height: 80%;

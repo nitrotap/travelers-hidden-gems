@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1 class="text-center">{{req.session.username}}'s Dashboard</h1>
+  <h1 class="text-center text-light">{{req.session.username}}'s Dashboard</h1>
 
 
 
@@ -11,10 +11,11 @@
     {{#if posts.length}}
     <div class="d-flex row mt-4">
       <div class="col text-nowrap text-center">
-        <h2 class="ms-1">Your Posts</h2>
+        <h2 class="ms-1 text-light">Your Posts</h2>
       </div>
       <div class="col d-flex justify-content-center">
-        <a href="/dashboard/newpost"><button class="btn btn-primary">Create New Post</button></a>
+        <a href="/dashboard/newpost"><button class="btn btn-primary" style="margin-bottom: 5px;">Create New
+            Post</button></a>
       </div>
       <div class="col d-flex justify-content-center">
         <a href="/dashboard/bookmarks"><button class="btn btn-secondary">View Your Bookmarks</button></a>
