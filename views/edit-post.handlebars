@@ -18,7 +18,9 @@
             <span>by you on {{format_date post.created_at}} ({{timeSince post.created_at}}) |</span>
             <a href="/post/{{post.id}}">{{commentCount post.comments}}</a>
           </div>
-          {{>map-dash}}
+          <div style="margin: 10px;">
+            {{>map}}
+          </div>
         </div>
       </div>
 
