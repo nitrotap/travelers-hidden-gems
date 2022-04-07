@@ -1,18 +1,44 @@
-<div class="feed-post">
-  <p class="post-title">{{post.title}}</p>
-  <p class="post-contents">{{post.contents}}</p>
-  <p class="post-byline"><span class="post-user">{{post.user.username}}</span> | {{format_date post.created_at}} ({{timeSince post.created_at}})</p>
+{{>map}}
+<div class="container" style="width: auto">
+  <div class="card text-center">
+    <div class="card-header">
+      <p class="post-title">{{post.title}}</p>
+    </div>
+    <div class="card-body row">
+      <div class="col d-flex flex-column justify-content-center">
+        <p class="post-contents">{{post.contents}}</p>
+        <p class="post-byline"><span class="post-user">{{post.user.username}}</span> | {{format_date post.created_at}}
+          ({{timeSince post.created_at}})</p>
+        <div>
+          {{#if loggedIn}}
+          {{#if post.bookmarks}}
+          <button type="button" class="btn btn-primary">Already Bookmarked</button>
+          {{else}}
+          <button type="button" class="btn btn-primary bookmark-btn">Bookmark</button>
+          {{/if}}
+          {{/if}}
+        </div>
+      </div>
+      
+      <div class="col">
+        {{#if loggedIn}}
+        {{> add-comment }}
+        {{/if}}
+      </div>
+
+
+      {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+    </div>
+    <div class="card-footer text-muted" id="comments">
+      <h4>{{commentCount post.comments}}</h4>
+      {{> comments post.comments}}
+    </div>
+  </div>
 </div>
 
 {{#if loggedIn}}
-{{> add-comment }}
-{{/if}}
-
-<h4>{{commentCount post.comments}}</h4>
-{{> comments post.comments}}
-
-{{>map}}
-
-{{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+{{#unless post.bookmarks}}
+<script src="/javascript/bookmark.js"></script>
+{{/unless}}
 {{/if}}

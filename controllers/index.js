@@ -9,7 +9,11 @@ router.use('/', homeRoutes);
 router.use('/dashboard', dashboardRoutes)
 
 router.use((req, res)=> {
-    res.render('error-page', {message:'Incorrect route encountered!'});
+    res.render('error-page', {
+        message:'Incorrect route encountered!',
+        req,
+        loggedIn: req.session.loggedIn
+    });
 });
 
 module.exports = router;

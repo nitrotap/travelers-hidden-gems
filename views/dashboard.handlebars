@@ -1,29 +1,94 @@
-<h1>Dashboard</h1>
+<div class="container">
 
-<section>
-  <a href="/dashboard/newpost" class="new-post">
-    <button class="btn btn-inline">Create New Post</button>
-  </a>
-</section>
+  <h1 class="text-center">{{req.session.username}}'s Dashboard</h1>
 
-<br />
-{{#if posts.length}}
-<section>
-  <h2>Your Posts</h2>
-  <ul>
-    {{#each posts as |post|}}
-    <li>
-      {{> posts post}}
-    </li>
-    <a href="/dashboard/edit/{{post.id}}" class="edit-link">
-      <button class="btn btn-inline">Edit Post</button>
-    </a>
-    <a href="post/{{id}}">
-      <h4>{{commentCount post.comments}}</h4>
-    </a>
-    {{/each}}
-  </ul>
-</section>
-{{/if}}
 
-{{>map}}
+
+  <div class="row d-flex dash">
+
+    {{>map}}
+
+    {{#if posts.length}}
+    <div class="d-flex row mt-4">
+      <div class="col text-nowrap text-center">
+        <h2 class="ms-1">Your Posts</h2>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <a href="/dashboard/newpost"><button class="btn btn-primary">Create New Post</button></a>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <a href="/dashboard/bookmarks"><button class="btn btn-secondary">View Your Bookmarks</button></a>
+      </div>
+    </div>
+    {{else}}
+    <div class="d-flex row mt-1">
+      <div class="col text-nowrap text-center">
+        <h2>Welcome</h2>
+        <p>You don't have any posts yet!</p>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <a href="/dashboard/newpost"><button class="btn btn-primary">Create Your First Post</button></a>
+      </div>
+      <div class="col-4 d-flex justify-content-center">
+        <a href="/dashboard/bookmarks"><button class="btn btn-secondary">View Your Bookmarks</button></a>
+      </div>
+    </div>
+    {{/if}}
+
+    <section class="col d-flex flex-column m-2">
+
+      {{#if posts.length}}
+      <div class="container" style="margin-top: 25px">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+
+          {{#each posts as |post|}}
+          <div class="col">
+            <div class="card">
+              <div class="card-header d-flex justify-content-around">
+                <a href="post/{{id}}" class="text-decoration-none">
+                  <h5 class="post-title">{{title}}</h5>
+                </a>
+                <a href="/dashboard/edit/{{id}}">
+                  <button class="btn btn-primary">Edit Post</button></a>
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{contents}}</p>
+              </div>
+              <div class="post-byline">
+                <span>by you on {{format_date post.created_at}} ({{timeSince post.created_at}}) |</span>
+                <a href="/post/{{post.id}}">{{commentCount post.comments}}</a>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+
+        </div>
+      </div>
+      {{else}}
+      <div class="container mt-25">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <div class="col">
+            <div class="card m-2 f-1">
+              <div class="card-header">
+                <h5 class="post-title">Your Post Could Be Here</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  Where is somewhere really cool you have been that's not well known?
+                  We encourage people to avoid posting tourist traps or other famous places. Everyone knows about
+                  Mt. Rushmore already, help us expand our horizons and add some pins to the map!
+                </p>
+              </div>
+              <div class="post-byline">
+                <span>by you on Today?</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+
+    </section>
+
+  </div>
+</div>

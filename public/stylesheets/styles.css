@@ -37,13 +37,15 @@
     border-bottom: solid 1px black;
     margin-top: 20px;
 }
+
 .post-contents {
     margin-left: 10px;
     margin-bottom: 0px;
     font-size: 18px;
 }
+
 .post-title {
-    font-size:24px;
+    font-size: 24px;
     font-weight: bold;
     color: var(--dark-pri-clr);
 }
@@ -54,7 +56,8 @@
     margin-bottom: 0px;
 }
 
-.post-byline, .comment-byline {
+.post-byline,
+.comment-byline {
     color: var(--pri-clr);
     margin-left: 10px;
     font-size: 14px;
@@ -71,12 +74,7 @@
     width: 400px;
     padding: 10px;
     background-color: whitesmoke;
-    position: fixed; 
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    margin-top: -200px;
-    margin-left: -200px;
+
 }
 
 .signup-form {
@@ -114,6 +112,7 @@
     font-weight: normal;
 }
 
+
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/pexels-tyler-lastovich-572688.jpg');
     /* background-position: center; */
@@ -122,3 +121,37 @@
     
 }
 
+
+.map-dash {
+    height: 80%;
+    width: 100%;
+    margin: auto;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .map-dash {
+        height: 500px;
+        width: 500px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .map-dash {
+        width: 500px;
+        margin: auto;
+    }
+
+    .dash {
+        display: inline;
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home-cards {
+        flex-flow: column;
+    }
+}

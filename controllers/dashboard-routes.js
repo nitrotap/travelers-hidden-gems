@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment } = require('../models');
+const { Post, User, Comment, Bookmark } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
@@ -35,6 +35,7 @@ router.get('/', withAuth, (req, res) => {
   })
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
+      // console.log(req);
       res.render('dashboard', {
         posts,
         req,
@@ -96,6 +97,50 @@ router.get('/newpost', withAuth, (req, res) => {
           req,
           loggedIn: req.session.loggedIn
         })
+});
+
+router.get('/bookmarks', (req, res) => {
+  Bookmark.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'user_id',
+      'post_id'
+    ],
+    include: [
+      {
+        model: Post,
+        attributes: ['id', 'title', 'contents', 'latitude', 'longitude', 'icon', 'user_id', 'created_at'],
+        include: {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      const bookmarks = dbPostData.map(post => post.get({ plain: true }));
+      // res.json(bookmarks)
+      res.render('bookmarks', {
+        bookmarks,
+        req,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

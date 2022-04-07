@@ -1,30 +1,63 @@
 <article>
-  <a href="/dashboard"> &larr; Back to dashboard</a>
-  <h2>
-    Edit Post
-  </h2>
-  <form class="edit-post-form">
-    <div>
+  <h1 style="text-align: center">Edit Post</h1>
+
+  <div class="container">
+    <div class="row d-flex mt-4 mb-5">
+
+      <div class="col justify-content-center">
+        <div class="card">
+          <div class="card-header">
+            <a href="post/{{post.id}}">
+              <h5 class="post-title">{{post.title}}</h5>
+            </a>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{post.contents}}</p>
+          </div>
+          <div class="post-byline">
+            <span>by you on {{format_date post.created_at}} ({{timeSince post.created_at}}) |</span>
+            <a href="/post/{{post.id}}">{{commentCount post.comments}}</a>
+          </div>
+          <div style="margin: 10px;">
+            {{>map}}
+          </div>
+        </div>
+      </div>
+
       <br />
-      <label for="post-title"><h3>Title</h3></label>
-      <input class="form-label" type="text" id="post-title" name="post-title" value="{{post.title}}" />
-      <label for="content"><h3>Post</h3></label>
-      <textarea rows="5" cols="40" class="form-textarea" id="content" name="content">{{post.contents}}</textarea>
+
+      <form class="edit-post-form col">
+        <div class="justify-content-center">
+          <div class="card">
+            <div class="card-header text-center">
+              <label for="post-title">
+                <h5 style="margin-right: 7px">Edit Title:</h5>
+              </label>
+              <input class="form-label" type="text" id="post-title" name="post-title" value="{{post.title}}" />
+            </div>
+            <div class="card-body text-center">
+              <label for="content" class="col-12">
+                <h5>Edit Post Content</h5>
+              </label>
+              <textarea style="width: 100%;" rows="6" class="form-textarea" id="content"
+                name="content">{{post.contents}}</textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary m-2">Save Post</button>
+              <button type="button" class="btn btn-danger delete-post-btn m-2">Delete Post</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+
     </div>
-    <div>
-      by you on {{format_date post.created_at}}
-      |
-      <a href="/post/{{post.id}}">{{commentCount post.comments}}</a>
-    </div>
-    <button type="submit" class="btn btn-inline">Save Post</button>
-    <button type="button" class="btn btn-inline delete-post-btn">Delete Post</button>
-  </form>
+
+
+  </div>
+
+
 </article>
-
-{{> add-comment }}
-
-{{> comments post.comments}}
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
-<script src="/javascript/comment.js"></script>

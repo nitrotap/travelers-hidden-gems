@@ -1,24 +1,31 @@
-<section>
-{{!need to add a background image, design for sign up}}
-<form class="input-form">
-    <h2 id="form-label">User Login</h2>
-    <div class="signup-form">
-        <label for="username-input">username:</label>
-        <input type="text" id="username-input" value="" />
+
+<section class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <form class="input-form">
+            <h2 id="form-label">User Login</h2>
+            <div class="signup-form">
+                <label for="username-input">username:</label>
+                <input type="text" id="username-input" value="" />
+            </div>
+            <div>
+                <label for="email-input">email:</label>
+                <input type="text" id="email-input" />
+            </div>
+            <div>
+                <label for="password-input">password:</label>
+                <input type="password" id="password-input" value="" />
+            </div>
+            <div class="button-wrapper">
+                <button id="input-submit" type="">login</button>
+            </div>
+            <a href="#">
+                <p id="switch-forms">New user? - click here</p>
+            </a>
+        </form>
+
+
     </div>
-    <div>
-        <label for="email-input">email:</label>
-        <input type="text" id="email-input" />
-    </div>
-    <div>
-        <label for="password-input">password:</label>
-        <input type="password" id="password-input" value="" />
-    </div>
-    <div class="button-wrapper">
-        <button id="input-submit" type="">login</button>
-    </div>
-    <a href="#"><p id="switch-forms">New user? - click here</p></a>
-</form>
+
 </section>
 
 <script src="/javascript/login.js"></script>
