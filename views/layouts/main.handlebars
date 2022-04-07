@@ -33,7 +33,7 @@
                     <ul class="navbar-nav">
                         {{#if req.session.loggedIn}}
                         <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">dashboard</a>
+                            <a href="/dashboard" class="nav-link" style="font-weight: 800;">dashboard</a>
                         </li>
                         <li>
                             <a href="/dashboard/bookmarks" class="nav-link">bookmarks</a>
@@ -42,7 +42,8 @@
                             <a href="/dashboard/newpost" class="nav-link">new post</a>
                         </li>
                         <li class="nav-item">
-                            <button id="logout" type="button" class="btn btn-link">logout</button>
+                            <button id="logout" type="button"
+                                class="btn btn-link text-decoration-none text-secondary">logout</button>
                         </li>
                         {{else}}
                         <li class="nav-item">
