@@ -7,7 +7,7 @@ Access all this application has to offer by creating a user account.  Once logge
   
 Click this [LINK](https://sleepy-woodland-16634.herokuapp.com/) try the application.
 
-<img width="500" alt="traveler's hidden gems landing page" src="public/assets/images/screenCap.jpg">
+<img width="500" alt="traveler's hidden gems landing page" src="public/assets/images/screenCap.JPG">
 
 ## Table of Contents
 
