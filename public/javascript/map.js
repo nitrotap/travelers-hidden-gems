@@ -24,7 +24,7 @@ const markerIcon = L.icon(
 		iconSize: [31, 46], // size of the icon
 		iconAnchor: [15.5, 42], // point of the icon which will correspond to marker's location
 		popupAnchor: [0, -45] // point from which the popup should open relative to the iconAnchor
-});
+	});
 
 async function addMarkersToMap() {
 	let markers = await getMarker();
@@ -39,19 +39,19 @@ async function addMarkersToMap() {
 
 const getDestination = () => {
 	switch(true) {
-		case document.URL.includes("bookmarks"):
-			return apiUrl = '/api/locations/bookmarks';
-		case document.URL.includes("dashboard"):
-			return apiUrl = '/api/locations/user';
-		case document.URL.includes("post"):
-			const postId = window.location.toString().split('/')[
-				window.location.toString().split('/').length - 1
-			];
-			return apiUrl = `/api/locations/${postId}`;
-		default:
-			return apiUrl = '/api/locations';
+	case document.URL.includes('bookmarks'):
+		return apiUrl = '/api/locations/bookmarks';
+	case document.URL.includes('dashboard'):
+		return apiUrl = '/api/locations/user';
+	case document.URL.includes('post'):
+		const postId = window.location.toString().split('/')[
+			window.location.toString().split('/').length - 1
+		];
+		return apiUrl = `/api/locations/${postId}`;
+	default:
+		return apiUrl = '/api/locations';
 	}
-}
+};
 
 async function getMarker() {
 	let markerArray = new Array();
@@ -62,15 +62,12 @@ async function getMarker() {
 	});
 
 	if (!response.ok) {
-			alert(response.statusText);
-			console.log(response.statusText);
+		alert(response.statusText);
+		console.log(response.statusText);
 	} else {
-		// console.log(response.json());
 		const locationData = response.json();
-		// console.log(locationData[1]);
 		markerArray = locationData;
-		// console.log(markerArray);
-	};
+	}
 
 	if (markerArray.length < 1) {
 		let defaultMarker = {
