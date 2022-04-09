@@ -5,7 +5,7 @@ A travel guide to hidden spots across the globe. Find the offbeat, see something
 
 Access all this application has to offer by creating a user account.  Once logged in you will be able to create, view, comment, and bookmark places of interest!  Use the well-designed map to view pins of the locations.  
   
-Click this [LINK](https://sleepy-woodland-16634.herokuapp.com/) try the application.   
+Click this [LINK](https://sleepy-woodland-16634.herokuapp.com/) to try the application.   
 [![License: (MIT)](https://img.shields.io/badge/License-MIT-yellow.svg)](https://choosealicense.com/licenses/mit/)   ![badmath](https://img.shields.io/github/languages/top/nitrotap/ecomm-db)   
 
 
