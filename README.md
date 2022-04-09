@@ -37,7 +37,7 @@ This app uses:
 Node Package Manager (npm), leaflet.js, GeoApify API, bcrypt, dotenv, express-sessions, Node.js, MySQL, Sequelize ORM, MySQL Workbench, Heroku, Bootstrap, Handlebars.js, OpenStreetMaps, and pexels.
 
 ## Heroku
-Application deployed at on heroku [HERE](https://sleepy-woodland-16634.herokuapp.com/)
+Application deployed on heroku [HERE](https://sleepy-woodland-16634.herokuapp.com/)
 
 ## Contributors
 [Kartik Jevaji](https://github.com/nitrotap)
